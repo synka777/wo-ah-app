@@ -1,26 +1,15 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [
-  {
-    path: 'home',
-    loadComponent: () => import('./pages/home/home.page').then((m) => m.HomePage),
-  },
-  {
-    path: 'schedule',
-    loadComponent: () => import('./pages/schedule/schedule.page').then( m => m.SchedulePage)
-  },
+import { LocationsPage } from './pages/locations/locations.page';
+import { SchedulePage } from './pages/schedule/schedule.page';
+import { PlantsPage } from './pages/plants/plants.page';
+import { HomePage } from './pages/home/home.page';
 
-  {
-    path: 'add',
-    loadComponent: () => import('./pages/add/add.page').then( m => m.AddPage)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: '**',
-    redirectTo: 'home',
-  },
+
+export const routes: Routes = [
+  { path: 'home', component: HomePage },
+  { path: 'schedule', component: SchedulePage },
+  { path: 'plants', component: PlantsPage },
+  { path: 'locations', component: LocationsPage },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

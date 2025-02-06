@@ -1,5 +1,31 @@
 <ion-app>
-  <app-header></app-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Wo'ah
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-router-outlet></ion-router-outlet>
-  <app-footer></app-footer>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home" [routerLink]="['/home']" routerLinkActive="active-tab">
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="schedule" [routerLink]="['/schedule']" routerLinkActive="active-tab">
+        <ion-icon name="calendar"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="plants" [routerLink]="['/plants']" routerLinkActive="active-tab">
+        <ion-icon name="leaf"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="locations" [routerLink]="['/locations']" routerLinkActive="active-tab">
+        <ion-icon name="locate"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

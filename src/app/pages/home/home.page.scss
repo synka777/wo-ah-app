@@ -1,0 +1,24 @@
+:host {
+  margin: 16px !important; /* Override host margin */
+  margin-top: 56px;
+}
+
+ion-content {
+  display: flex;
+  flex-grow: 1; /* Allow content to grow and fill the remaining space */
+  overflow-y: auto; /* Enable scroll if needed */
+  flex-direction: column;
+  --padding-top: 56px; /* Adjust for header height (56px each) */
+  --padding-bottom: 56px; /* Adjust for footer height */
+}
+
+ion-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ion-color-secondary);
+  margin: 16px 0 0 0; /* Add margin to separate cards */
+  padding: 16px; /* Add padding inside the card */
+  ion-card-title {
+    margin-bottom: 16px;
+  }
+}

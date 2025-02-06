@@ -5,22 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-plants',
+  templateUrl: './plants.page.html',
+  styleUrls: ['./plants.page.scss'],
   standalone: true,
-  imports: [IonTitle, IonToolbar, IonHeader, 
-    CommonModule,
-    FormsModule,
-    IonCardHeader,
-    IonCardTitle,
-    IonCard,
-    IonCardContent,
-    IonText,
-    IonContent
-  ]
+  imports: [IonTitle, IonToolbar, IonHeader, IonContent, IonText, IonCardContent, IonCard, IonCardTitle, IonCardHeader, CommonModule, FormsModule ]
 })
-export class HomePage implements OnInit {
+export class PlantsPage implements OnInit {
 
   constructor() { }
 
