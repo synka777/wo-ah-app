@@ -1,4 +1,5 @@
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonText, IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
+import { ElemListComponent } from 'src/app/components/elem-list/elem-list.component';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,9 +11,10 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./schedule.page.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [IonTitle, IonToolbar, IonHeader, IonContent, IonText, IonCardContent, IonCardTitle, IonCardHeader, IonCard, CommonModule, FormsModule ]
+  imports: [IonTitle, IonToolbar, IonHeader, IonContent, CommonModule, FormsModule, ElemListComponent]
 })
 export class SchedulePage implements OnInit {
+  emptyDescription: string = 'Please create a schedule to get started!';
 
   constructor() { }
 

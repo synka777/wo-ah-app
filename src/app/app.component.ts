@@ -18,7 +18,7 @@ addIcons({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [IonTitle, IonToolbar, IonHeader, 
+  imports: [IonTitle, IonToolbar, IonHeader,
     CommonModule,
     RouterModule,
     IonApp,

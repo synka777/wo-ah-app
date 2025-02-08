@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { PlantsPage } from './plants.page';
+
 
 describe('PlantsPage', () => {
   let component: PlantsPage;
