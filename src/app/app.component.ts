@@ -1,6 +1,6 @@
 import { IonApp, IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonHeader, IonToolbar, IonTitle } from '@ionic/angular/standalone';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
-import { home, calendar, leaf, locate } from 'ionicons/icons';
+import { home, calendar, leaf, location } from 'ionicons/icons';
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
@@ -10,7 +10,7 @@ addIcons({
   'home': home,
   'calendar': calendar,
   'leaf': leaf,
-  'locate': locate
+  'location': location
 });
 
 
@@ -35,7 +35,7 @@ export class AppComponent {
   // showTabs: boolean = false;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
-      addIcons({home,calendar,leaf,locate});
+      addIcons({home,leaf,calendar,location});
       // this.router.events.subscribe((event) => {
       //   if (event instanceof NavigationStart) {
       //     // Hide the tabs before route change if necessary

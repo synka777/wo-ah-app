@@ -18,6 +18,8 @@ addIcons({
 export class ElemListComponent  implements OnInit {
   @Input() elems: any[] = [] // Placeholder for list of WebElements to display in the list. Get the list from storage
   @Input() emptyDescription: string = ''
+  @Input() icon: string = ''; // Accept icon from parent component
+  @Input() elemType: string = ''; // Accept elemType from parent component
 
   constructor() { }
 

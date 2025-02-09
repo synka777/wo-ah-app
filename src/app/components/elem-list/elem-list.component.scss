@@ -17,6 +17,25 @@ ion-card {
   justify-content: center;
   align-items: center;
   border: 1px solid var(--ion-color-medium);
+  position: relative; /* Ensure the card is positioned relative to its container */
+  background: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  overflow: visible !important;
+
+  .prop {
+    display: flex;
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom */
+    left: 10px; /* Adjust the distance from the left */
+    color: red !important;
+    font-size: 130px;
+    z-index: -1;
+    pointer-events: none; /* Ensure the icon does not interfere with other elements */
+    background: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    all: unset;
+  }
 
   ion-card-header {
     display: flex;
@@ -30,6 +49,7 @@ ion-card {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
   }
 
   ion-button {

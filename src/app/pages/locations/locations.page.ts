@@ -1,6 +1,7 @@
 import { IonContent, IonTitle, IonToolbar, IonHeader } from '@ionic/angular/standalone';
 import { ElemListComponent } from 'src/app/components/elem-list/elem-list.component';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { locationOutline } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class LocationsPage implements OnInit {
   emptyDescription: string = 'Optional: Add a location to your plants!';
+  elemType: string = 'location';
+  icon: any = locationOutline;
 
   constructor() { }
 
