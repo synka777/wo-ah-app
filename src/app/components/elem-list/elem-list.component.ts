@@ -1,8 +1,14 @@
 import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { Component, OnInit, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { add } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { from } from 'rxjs';
+
+import { ScheduleModalComponent } from '../modals/sched-mod/sched-mod.component';
+import { LocationModalComponent } from '../modals/locat-mod/locat-mod.component';
+import { PlantModalComponent } from '../modals/plant-mod/plant-mod.component';
 
 
 addIcons({
@@ -21,11 +27,20 @@ export class ElemListComponent  implements OnInit {
   @Input() icon: string = ''; // Accept icon from parent component
   @Input() elemType: string = ''; // Accept elemType from parent component
 
-  constructor() { }
+  modalComponent: any = null;
 
-  ngOnInit() {}
+  constructor(private modalController: ModalController) { }
+
+  ngOnInit() {
+    if(this.elemType === 'plant') this.modalComponent = PlantModalComponent;
+    else if (this.modalComponent === 'schedule') this.modalComponent = ScheduleModalComponent;
+    else this.modalComponent = LocationModalComponent;
+  }
 
   openModalForm() {
-    // Open a modal to add a new elem
+    const modal$ = from(this.modalController.create({
+      component: this.modalComponent,
+    }));
+    modal$.subscribe(modal => modal.present());
   }
 }
