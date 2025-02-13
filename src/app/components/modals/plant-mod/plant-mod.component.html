@@ -1,12 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Add a plant</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">Close</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class='modal'>
+  <ion-header *ngIf="isReady">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="dismiss()">Close</ion-button>
+      </ion-buttons>
+      <ion-title slot="end">{{ plant ? 'Edit Plant' : 'New Plant' }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content class="ion-padding">
-
-</ion-content>
+  <ion-content *ngIf="isReady">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="plant.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nickname</ion-label>
+        <ion-input [(ngModel)]="plant.nickname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Species</ion-label>
+        <ion-input [(ngModel)]="plant.species"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Last Watered</ion-label>
+        <ion-datetime [(ngModel)]="plant.lastWatered"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Last Fertilized</ion-label>
+        <ion-datetime [(ngModel)]="plant.lastFertilized"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Note</ion-label>
+        <ion-textarea [(ngModel)]="plant.note"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Location</ion-label>
+        <ion-input [(ngModel)]="plant.location"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" (click)="save()">Save</ion-button>
+  </ion-content>
+</div>

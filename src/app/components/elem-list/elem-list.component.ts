@@ -40,6 +40,9 @@ export class ElemListComponent  implements OnInit {
   openModalForm() {
     const modal$ = from(this.modalController.create({
       component: this.modalComponent,
+      handle: false,
+      initialBreakpoint: 1, // Start at 100% of screen height
+      cssClass: '../../components/modals/plant-mod/plant-mod.component.scss',
     }));
     modal$.subscribe(modal => modal.present());
   }
