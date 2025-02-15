@@ -10,6 +10,7 @@
  */
 
 @use 'src/theme/variables.scss' as *;
+@import 'node_modules/flatpickr/dist/themes/dark.css';
 
  /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";

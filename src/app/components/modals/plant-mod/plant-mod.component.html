@@ -12,33 +12,33 @@
     <ion-list>
       <ion-item>
         <ion-label position="floating">Name</ion-label>
-        <ion-input [(ngModel)]="plant.name"></ion-input>
+        <input [(ngModel)]="plant.name">
       </ion-item>
       <ion-item>
         <ion-label position="floating">Nickname</ion-label>
-        <ion-input [(ngModel)]="plant.nickname"></ion-input>
+        <input [(ngModel)]="plant.nickname">
       </ion-item>
       <ion-item>
         <ion-label position="floating">Species</ion-label>
-        <ion-input [(ngModel)]="plant.species"></ion-input>
+        <input [(ngModel)]="plant.species">
       </ion-item>
       <ion-item>
         <ion-label position="floating">Last Watered</ion-label>
-        <ion-datetime [(ngModel)]="plant.lastWatered"></ion-datetime>
+        <input #lastWateredInput type="text" [(ngModel)]="plant.lastWatered">
       </ion-item>
       <ion-item>
         <ion-label position="floating">Last Fertilized</ion-label>
-        <ion-datetime [(ngModel)]="plant.lastFertilized"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Note</ion-label>
-        <ion-textarea [(ngModel)]="plant.note"></ion-textarea>
+        <input #lastFertilizedInput type="text" [(ngModel)]="plant.lastFertilized">
       </ion-item>
       <ion-item>
         <ion-label position="floating">Location</ion-label>
-        <ion-input [(ngModel)]="plant.location"></ion-input>
+        <input [(ngModel)]="plant.location">
       </ion-item>
     </ion-list>
-    <ion-button expand="full" (click)="save()">Save</ion-button>
+    <ion-item>
+      <ion-label position="floating">Note</ion-label>
+      <textarea [(ngModel)]="plant.note"></textarea>
+    </ion-item>
+    <ion-button expand="full" class="save-btn" (click)="save()">Save</ion-button>
   </ion-content>
 </div>

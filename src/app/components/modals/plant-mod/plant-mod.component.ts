@@ -1,8 +1,9 @@
-import { IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonList, IonInput, IonLabel, IonDatetime, IonTextarea } from "@ionic/angular/standalone";
-import { Component, Input, OnInit } from '@angular/core';
+import { IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonList, IonInput, IonLabel } from "@ionic/angular/standalone";
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
+import flatpickr from "flatpickr";
 import { delay, of } from "rxjs";
 
 import { Plant } from '../../../classes/plant.model';
@@ -13,11 +14,14 @@ import { Plant } from '../../../classes/plant.model';
   standalone: true,
   templateUrl: './plant-mod.component.html',
   styleUrls: ['./plant-mod.component.scss'],
-  imports: [CommonModule, FormsModule, IonTextarea, IonDatetime, IonLabel, IonInput, IonList, IonItem, IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent]
+  imports: [CommonModule, FormsModule, IonLabel, IonInput, IonList, IonItem, IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent]
 })
-export class PlantModalComponent implements OnInit {
+export class PlantModalComponent implements OnInit, AfterViewInit {
   @Input() plant!: Plant;
   isReady: boolean = false;
+
+  @ViewChild('lastWateredInput', { static: false }) lastWateredInput!: ElementRef;
+  @ViewChild('lastFertilizedInput', { static: false }) lastFertilizedInput!: ElementRef;
 
   constructor(private modalController: ModalController) {
     // Perform constructor instructions here
@@ -34,6 +38,28 @@ export class PlantModalComponent implements OnInit {
 
   ngOnInit() {
     // Additional initialization if needed
+  }
+
+  ngAfterViewInit() {
+    of(null).pipe(delay(100)).subscribe(() => {
+      if (this.lastWateredInput) {
+        flatpickr(this.lastWateredInput.nativeElement, {
+          defaultDate: this.plant.lastWatered,
+          onChange: (selectedDates) => {
+            this.plant.lastWatered = selectedDates[0];
+          }
+        });
+      }
+
+      if (this.lastFertilizedInput) {
+        flatpickr(this.lastFertilizedInput.nativeElement, {
+          defaultDate: this.plant.lastFertilized,
+          onChange: (selectedDates) => {
+            this.plant.lastFertilized = selectedDates[0];
+          }
+        });
+      }
+    });
   }
 
   dismiss() {
