@@ -1,4 +1,4 @@
-import { IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonList, IonInput, IonLabel } from "@ionic/angular/standalone";
+import { IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonList } from "@ionic/angular/standalone";
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommonModule } from "@angular/common";
@@ -14,7 +14,7 @@ import { Plant } from '../../../classes/plant.model';
   standalone: true,
   templateUrl: './plant-mod.component.html',
   styleUrls: ['./plant-mod.component.scss'],
-  imports: [CommonModule, FormsModule, IonLabel, IonInput, IonList, IonItem, IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent]
+  imports: [CommonModule, FormsModule, IonList, IonItem, IonToolbar, IonHeader, IonTitle, IonButtons, IonButton, IonContent]
 })
 export class PlantModalComponent implements OnInit, AfterViewInit {
   @Input() plant!: Plant;
@@ -24,8 +24,6 @@ export class PlantModalComponent implements OnInit, AfterViewInit {
   @ViewChild('lastFertilizedInput', { static: false }) lastFertilizedInput!: ElementRef;
 
   constructor(private modalController: ModalController) {
-    // Perform constructor instructions here
-    // ...
 
     // Simulate async operation
     of(new Plant('', '', '', new Date(), new Date(), '', ''))
@@ -60,6 +58,19 @@ export class PlantModalComponent implements OnInit, AfterViewInit {
         });
       }
     });
+  }
+
+  onFocus(event: FocusEvent) {
+    const parent = (event.target as HTMLInputElement).parentElement;
+    parent?.classList.add('has-value');
+  }
+
+  onBlur(event: FocusEvent) {
+    const input = event.target as HTMLInputElement;
+    if (!input.value) {
+      const parent = input.parentElement;
+      parent?.classList.remove('has-value');
+    }
   }
 
   dismiss() {
