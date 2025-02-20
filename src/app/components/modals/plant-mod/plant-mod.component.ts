@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import flatpickr from "flatpickr";
 import { delay, of } from "rxjs";
 
+import { StorageService } from "../../../services/storage.service";
 import { Plant } from '../../../classes/plant.model';
 
 
@@ -23,7 +24,10 @@ export class PlantModalComponent implements OnInit, AfterViewInit {
   @ViewChild('lastWateredInput', { static: false }) lastWateredInput!: ElementRef;
   @ViewChild('lastFertilizedInput', { static: false }) lastFertilizedInput!: ElementRef;
 
-  constructor(private modalController: ModalController) {
+  constructor(
+    private _modalController: ModalController,
+    private _storageService: StorageService
+  ) {
 
     // Simulate async operation
     of(new Plant('', '', '', new Date(), new Date(), '', ''))
@@ -74,11 +78,11 @@ export class PlantModalComponent implements OnInit, AfterViewInit {
   }
 
   dismiss() {
-    this.modalController.dismiss();
+    this._modalController.dismiss();
   }
 
   save() {
     // Save the plant data
-    this.modalController.dismiss(this.plant);
+    this._modalController.dismiss(this.plant);
   }
 }
